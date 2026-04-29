@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>TokoKita Auth</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="flex items-center justify-center h-screen bg-gray-100">
+
+<!-- ================= CONTAINER ================= -->
+<div class="bg-white p-8 rounded-xl shadow w-96">
+
+  <h2 class="text-xl font-bold mb-4 text-center">TokoKita</h2>
+
+  <!-- TAB BUTTON -->
+  <div class="flex mb-4 gap-2">
+    <button onclick="showLogin()" class="w-1/2 bg-indigo-600 text-white py-1 rounded">Login</button>
+    <button onclick="showRegister()" class="w-1/2 bg-green-600 text-white py-1 rounded">Daftar</button>
+  </div>
+
+  <!-- ================= LOGIN FORM ================= -->
+  <div id="loginForm">
+
+    <input id="loginEmail" class="w-full border p-2 mb-2 rounded" placeholder="Email">
+    <input id="loginPassword" type="password" class="w-full border p-2 mb-3 rounded" placeholder="Password">
+
+    <button onclick="login()" class="w-full bg-indigo-600 text-white p-2 rounded">
+      Login
+    </button>
+
+  </div>
+
+  <!-- ================= REGISTER FORM ================= -->
+  <div id="registerForm" class="hidden">
+
+    <input id="regName" class="w-full border p-2 mb-2 rounded" placeholder="Nama">
+    <input id="regEmail" class="w-full border p-2 mb-2 rounded" placeholder="Email">
+    <input id="regPassword" type="password" class="w-full border p-2 mb-3 rounded" placeholder="Password">
+
+    <button onclick="register()" class="w-full bg-green-600 text-white p-2 rounded">
+      Daftar
+    </button>
+
+  </div>
+
+</div>
+
+<script>
+
+// ================= INIT USERS =================
+if(!localStorage.getItem("users")) {
+  localStorage.setItem("users", JSON.stringify([]));
+}
+
+// ================= SWITCH FORM =================
+function showLogin() {
+  document.getElementById("loginForm").style.display = "block";
+  document.getElementById("registerForm").style.display = "none";
+}
+
+function showRegister() {
+  document.getElementById("loginForm").style.display = "none";
+  document.getElementById("registerForm").style.display = "block";
+}
+
+// ================= REGISTER =================
+function register() {
+
+  let name = document.getElementById("regName").value.trim();
+  let email = document.getElementById("regEmail").value.trim();
+  let password = document.getElementById("regPassword").value.trim();
+
+  if(!name || !email || !password) {
+    alert("Isi semua data!");
+    return;
+  }
+
+  let users = JSON.parse(localStorage.getItem("users"));
+
+  let exist = users.find(u => u.email === email);
+  if(exist) {
+    alert("Email sudah terdaftar!");
+    return;
+  }
+
+  users.push({
+    name,
+    email,
+    password,
+    role: "user"
+  });
+
+  localStorage.setItem("users", JSON.stringify(users));
+
+  // AUTO LOGIN SETELAH REGISTER
+  localStorage.setItem("login", "true");
+  localStorage.setItem("role", "user");
+  localStorage.setItem("name", name);
+
+  window.location.href = "index.html";
+}
+
+// ================= LOGIN =================
+function login() {
+
+  let email = document.getElementById("loginEmail").value.trim();
+  let password = document.getElementById("loginPassword").value.trim();
+
+  if(!email || !password) {
+    alert("Isi email & password!");
+    return;
+  }
+
+  // ADMIN LOGIN
+  if(email === "admin@tokokita.com" && password === "admin123") {
+    localStorage.setItem("login", "true");
+    localStorage.setItem("role", "admin");
+    localStorage.setItem("name", "Admin");
+
+    window.location.href = "index.html";
+    return;
+  }
+
+  let users = JSON.parse(localStorage.getItem("users"));
+
+  let user = users.find(u => u.email === email && u.password === password);
+
+  if(!user) {
+    alert("Akun tidak ditemukan, silakan daftar dulu!");
+    return;
+  }
+
+  // LOGIN SUCCESS
+  localStorage.setItem("login", "true");
+  localStorage.setItem("role", "user");
+  localStorage.setItem("name", user.name);
+
+  window.location.href = "index.html";
+}
+
+</script>
+
+</body>
+</html>

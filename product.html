@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TokoKita Admin - Product Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#006e2f",
+                    "surface-container-highest": "#e4e1ee",
+                    "inverse-primary": "#c3c0ff",
+                    "tertiary": "#7e3000",
+                    "surface-container": "#f0ecf9",
+                    "surface": "#fcf8ff",
+                    "on-surface-variant": "#464555",
+                    "tertiary-fixed-dim": "#ffb695",
+                    "tertiary-container": "#a44100",
+                    "surface-tint": "#4d44e3",
+                    "secondary-fixed": "#6bff8f",
+                    "on-primary": "#ffffff",
+                    "primary": "#3525cd",
+                    "on-background": "#1b1b24",
+                    "on-secondary-fixed-variant": "#005321",
+                    "on-tertiary-fixed": "#351000",
+                    "secondary-fixed-dim": "#4ae176",
+                    "error-container": "#ffdad6",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#c7c4d8",
+                    "surface-container-low": "#f5f2ff",
+                    "outline": "#777587",
+                    "on-surface": "#1b1b24",
+                    "on-primary-container": "#dad7ff",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "on-tertiary-fixed-variant": "#7b2f00",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#f3effc",
+                    "tertiary-fixed": "#ffdbcc",
+                    "surface-dim": "#dcd8e5",
+                    "surface-container-high": "#eae6f4",
+                    "secondary-container": "#6bff8f",
+                    "on-tertiary-container": "#ffd2be",
+                    "background": "#fcf8ff",
+                    "surface-variant": "#e4e1ee",
+                    "surface-bright": "#fcf8ff",
+                    "on-primary-fixed": "#0f0069",
+                    "on-secondary-fixed": "#002109",
+                    "on-tertiary": "#ffffff",
+                    "inverse-surface": "#302f39",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "on-error-container": "#93000a",
+                    "primary-fixed": "#e2dfff",
+                    "on-secondary-container": "#007432",
+                    "on-error": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#4f46e5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "64px",
+                    "container-max": "1280px",
+                    "base": "4px",
+                    "lg": "40px",
+                    "md": "24px",
+                    "xs": "8px",
+                    "gutter": "24px",
+                    "sm": "16px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-sm": ["Plus Jakarta Sans"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #F8FAFC;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<aside class="docked fixed left-0 top-0 h-full w-64 rounded-r-lg bg-white shadow-md border-r border-slate-100 flex flex-col py-6 space-y-2 z-50">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-white" data-icon="store">store</span>
+</div>
+<div>
+<h1 class="text-lg font-bold text-indigo-600 font-headline-sm">TokoKita</h1>
+<p class="text-[10px] uppercase tracking-widest text-slate-400 font-semibold">Admin Dashboard</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center px-4 py-3 text-slate-500 hover:text-indigo-500 transition-transform duration-200 hover:translate-x-1 group" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="dashboard">dashboard</span>
+<span class="font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center px-4 py-3 text-indigo-600 font-semibold border-r-4 border-indigo-600 bg-indigo-50/50 transition-transform duration-200 hover:translate-x-1 group" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-md">Products</span>
+</a>
+<a class="flex items-center px-4 py-3 text-slate-500 hover:text-indigo-500 transition-transform duration-200 hover:translate-x-1 group" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="shopping_cart">shopping_cart</span>
+<span class="font-label-md">Orders</span>
+</a>
+</nav>
+<div class="px-4 mt-auto">
+<a class="flex items-center px-4 py-3 text-slate-500 hover:text-indigo-500 transition-transform duration-200 hover:translate-x-1 group" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="logout">logout</span>
+<span class="font-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<main class="ml-64 min-h-screen">
+<header class="bg-white/80 backdrop-blur-md sticky top-0 z-40 border-b border-slate-100 shadow-sm flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center">
+<h2 class="font-['Plus_Jakarta_Sans'] font-medium text-slate-800">Product Management</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-50 rounded-full transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-50 rounded-full transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border-2 border-indigo-100">
+<img alt="Admin Profile" data-alt="professional headshot of a female shop administrator in a bright modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBU5QIeP4mNdwxCvygd62JszhHHpl0bmNG7H5xfVJb3Grm4hbutF5iS1Ou45KGfpgQfMI99Z_bEYcZHWyXs6MQ1gnhraJ8hB67XkdMpuNHRfGz6VBX9-Jnzw1MuigaSVUJhStlmnJs9zLKix15xt8ZAWcyikgesq7lW3uNIpz2RZAZ2VP-7COTbVlWBJj5QDB8CJG3bSS8jbaH57S9sgFgd3YCXWM2paWyhrFsFEuWCRh05AHl0sYWXpxiv-nyEIUnmEH3Mg70OpBz8"/>
+</div>
+</div>
+</header>
+<div class="p-md lg:p-xl max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-lg">
+<div>
+<h1 class="font-display-lg text-headline-md text-on-surface mb-2">Inventory</h1>
+<p class="text-body-md text-outline">Manage your handmade accessories and stock levels.</p>
+</div>
+<button class="bg-primary text-on-primary px-6 py-3 rounded-xl font-label-md flex items-center gap-2 shadow-lg shadow-primary/20 hover:-translate-y-1 transition-all duration-200 active:scale-95">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+                    Add New Product
+                </button>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter items-start">
+<div class="lg:col-span-2 space-y-md">
+<div class="bg-white rounded-xl shadow-[0_4px_12px_rgba(77,68,227,0.02)] border border-slate-100 overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50/50 border-b border-slate-100">
+<th class="px-6 py-4 font-label-sm text-outline uppercase tracking-wider">Product</th>
+<th class="px-6 py-4 font-label-sm text-outline uppercase tracking-wider">Price</th>
+<th class="px-6 py-4 font-label-sm text-outline uppercase tracking-wider">Stock</th>
+<th class="px-6 py-4 font-label-sm text-outline uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-50">
+<tr class="hover:bg-slate-50/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-4">
+<div class="h-14 w-14 rounded-lg overflow-hidden bg-slate-100 flex-shrink-0">
+<img alt="Bracelet" class="w-full h-full object-cover" data-alt="close-up of a handmade bohemian woven bracelet with turquoise beads on a soft linen background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2Yc23wWztUTGCHaVyJPhHNAbOf2TqK83F5Onpi1KftIdbLix2F-wECzjH-SNk-pnfNOyi2xjVYO-KvUH55hIxSo_b0oj2LpJNLolfiGSaTBv7HOtss6yPGFN-Vv_yhXETbOmcT8zjwIbNhluUUZ54US6KW7cxlF3h52jzguesXR4ST9FaE0_go-UwWsaX4hpcg6jnv0C9Y8sQmjgeOhMJd0ba1iXQQ0mTDk-vY-ZX-yEbB89TaW7pte5-d5UJ5aS2Q1EWlNlRByk8"/>
+</div>
+<div>
+<p class="font-headline-sm text-[16px] text-on-surface">Ocean Breeze Bracelet</p>
+<p class="text-label-sm text-outline">Hand-woven Silk</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-body-md font-medium text-on-surface">$24.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-secondary/10 text-secondary">
+                                                42 in stock
+                                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+<button class="p-2 text-outline hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-4">
+<div class="h-14 w-14 rounded-lg overflow-hidden bg-slate-100 flex-shrink-0">
+<img alt="Necklace" class="w-full h-full object-cover" data-alt="delicate gold chain necklace with a small handcrafted pearl pendant resting on a white ceramic surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxXPVw-sK8nBJERZNjQGwEUiYZGdOCTmHHlCnI2iYByQSKCUrv2LuwDxZdDbsHU7rhSkR7bzxqLdu1lXguQcDcvMLXBhvdku8J2Yio5dZRBMw8lUsMWtnc_LDFm1fjleGls4X1q-NieZwYSbHBZ0KOwrnPL6-EDj0sKRV0wazyExKR5ttnrmdiawCaV3WNzd9egyCtClGTOLcEfKuAH9Pbm6JjMwFP3mF8H5fHYFO24ejDbTkQcJgj_RRdCrT3M-IWGKHaCF8O9aAP"/>
+</div>
+<div>
+<p class="font-headline-sm text-[16px] text-on-surface">Moonlit Pearl Necklace</p>
+<p class="text-label-sm text-outline">18k Gold Plated</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-body-md font-medium text-on-surface">$48.50</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-tertiary/10 text-tertiary">
+                                                12 in stock
+                                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+<button class="p-2 text-outline hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-4">
+<div class="h-14 w-14 rounded-lg overflow-hidden bg-slate-100 flex-shrink-0">
+<img alt="Earrings" class="w-full h-full object-cover" data-alt="modern minimalist clay earrings with a marble texture and geometric shapes in warm earth tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiw1kDO7a50QHubd1sFFptbISxN4PViEbwS_BPc9PmKluqgSP0jurqHnMFUNDgct3fODIEHnwU5jTedpvCO1-8TPi5dwy0kcfPAMvIEn5t7nFrCJP-y-NS8CDmqaRFPVAhuwa9cxRF1fuQ8H8UBR-jobkVDp4IGbyZkA8i6i8k1uFFEWUR8LJij9sXMRxesXXq4VKgA769TzWATAU0rZwgcKXDujaE1kSwFUSZNXqReHhn6Zdj5EQt-zN761v018DGlWMLMa17Tsqt"/>
+</div>
+<div>
+<p class="font-headline-sm text-[16px] text-on-surface">Desert Rose Earrings</p>
+<p class="text-label-sm text-outline">Handmade Clay</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-body-md font-medium text-on-surface">$18.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-error/10 text-error">
+                                                3 left
+                                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+<button class="p-2 text-outline hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="space-y-md">
+<div class="bg-white p-6 rounded-xl shadow-[0_4px_12px_rgba(77,68,227,0.02)] border border-slate-100">
+<h3 class="font-headline-sm text-on-surface mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="add_circle">add_circle</span>
+                            Quick Add
+                        </h3>
+<form class="space-y-5">
+<div>
+<label class="block font-label-md text-on-surface mb-2">Product Name</label>
+<input class="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none text-body-md" placeholder="e.g. Lavender Beaded Anklet" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block font-label-md text-on-surface mb-2">Price ($)</label>
+<input class="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none text-body-md" placeholder="0.00" step="0.01" type="number"/>
+</div>
+<div>
+<label class="block font-label-md text-on-surface mb-2">Stock</label>
+<input class="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none text-body-md" placeholder="0" type="number"/>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-on-surface mb-2">Category</label>
+<select class="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none text-body-md appearance-none">
+<option>Necklaces</option>
+<option>Bracelets</option>
+<option>Earrings</option>
+<option>Rings</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md text-on-surface mb-2">Product Image</label>
+<div class="border-2 border-dashed border-slate-200 rounded-lg p-6 text-center hover:bg-slate-50 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors mb-2" data-icon="upload_file">upload_file</span>
+<p class="text-label-sm text-outline">Click to upload or drag &amp; drop</p>
+</div>
+</div>
+<button class="w-full bg-primary-container text-on-primary-container font-label-md py-3 rounded-lg hover:opacity-90 transition-opacity" type="submit">
+                                Save Product
+                            </button>
+</form>
+</div>
+<div class="bg-indigo-600 p-6 rounded-xl text-white relative overflow-hidden">
+<div class="relative z-10">
+<h4 class="font-headline-sm mb-2">Low Stock Alert</h4>
+<p class="text-body-md opacity-90 mb-4">You have 3 items that are running low on stock. Time to replenish your inventory!</p>
+<button class="bg-white/20 backdrop-blur-md text-white font-label-sm px-4 py-2 rounded-lg border border-white/30 hover:bg-white/30 transition-all">
+                                View Low Stock
+                            </button>
+</div>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-[120px] opacity-10 pointer-events-none" data-icon="warning">warning</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

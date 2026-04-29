@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TokoKita Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#006e2f",
+                        "surface-container-highest": "#e4e1ee",
+                        "inverse-primary": "#c3c0ff",
+                        "tertiary": "#7e3000",
+                        "surface-container": "#f0ecf9",
+                        "surface": "#fcf8ff",
+                        "on-surface-variant": "#464555",
+                        "tertiary-fixed-dim": "#ffb695",
+                        "tertiary-container": "#a44100",
+                        "surface-tint": "#4d44e3",
+                        "secondary-fixed": "#6bff8f",
+                        "on-primary": "#ffffff",
+                        "primary": "#3525cd",
+                        "on-background": "#1b1b24",
+                        "on-secondary-fixed-variant": "#005321",
+                        "on-tertiary-fixed": "#351000",
+                        "secondary-fixed-dim": "#4ae176",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#c7c4d8",
+                        "surface-container-low": "#f5f2ff",
+                        "outline": "#777587",
+                        "on-surface": "#1b1b24",
+                        "on-primary-container": "#dad7ff",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "on-tertiary-fixed-variant": "#7b2f00",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#f3effc",
+                        "tertiary-fixed": "#ffdbcc",
+                        "surface-dim": "#dcd8e5",
+                        "surface-container-high": "#eae6f4",
+                        "secondary-container": "#6bff8f",
+                        "on-tertiary-container": "#ffd2be",
+                        "background": "#fcf8ff",
+                        "surface-variant": "#e4e1ee",
+                        "surface-bright": "#fcf8ff",
+                        "on-primary-fixed": "#0f0069",
+                        "on-secondary-fixed": "#002109",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#302f39",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#e2dfff",
+                        "on-secondary-container": "#007432",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#4f46e5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "64px",
+                        "container-max": "1280px",
+                        "base": "4px",
+                        "lg": "40px",
+                        "md": "24px",
+                        "xs": "8px",
+                        "gutter": "24px",
+                        "sm": "16px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #F8FAFC;
+        }
+        .ambient-shadow {
+            box-shadow: 0 4px 12px -2px rgba(79, 70, 229, 0.04), 0 2px 4px -1px rgba(79, 70, 229, 0.02);
+        }
+        .lift-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -4px rgba(79, 70, 229, 0.08);
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<aside class="docked fixed left-0 top-0 h-full w-64 rounded-r-lg bg-white border-r border-slate-100 shadow-md z-50 flex flex-col py-6 space-y-2">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-white" data-icon="store">store</span>
+</div>
+<div>
+<h1 class="text-lg font-bold text-indigo-600 font-headline-sm leading-tight">TokoKita</h1>
+<p class="text-xs text-slate-500 font-label-sm">Admin Dashboard</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 text-indigo-600 font-semibold border-r-4 border-indigo-600 bg-indigo-50/50" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 text-slate-500 hover:text-indigo-500 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-md">Products</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 text-slate-500 hover:text-indigo-500 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span class="font-label-md">Orders</span>
+</a>
+</nav>
+<div class="px-4 mt-auto">
+<button class="w-full flex items-center justify-center gap-2 bg-primary text-white py-3 rounded-xl font-label-md lift-hover transition-all duration-200 shadow-sm active:scale-95">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+<span>Add New Product</span>
+</button>
+<a class="flex items-center gap-3 px-4 py-3 mt-4 rounded-xl transition-all duration-200 text-slate-500 hover:text-error hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<main class="ml-64 min-h-screen">
+<header class="docked full-width top-0 sticky z-40 bg-white/80 backdrop-blur-md border-b border-slate-100 shadow-sm flex justify-between items-center px-8 h-16 w-full">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-sm text-on-surface">Overview</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-slate-400" data-icon="search">search</span>
+<input class="pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-full text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all w-64" placeholder="Search orders..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-50 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-50 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border-2 border-primary/20">
+<img alt="Admin Profile" data-alt="Professional headshot of a woman admin with a friendly expression in a modern office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCP0VaAg8a5aBqe4yMR-buXzU5URetQTcmrjdmP39j1MfKVxYDZrweLS_1kRlAFOnDiXKp4dBQT6B-njvhZiYs2tnsxE1eYBD5K8tSjvBYE1VmZ3Q-VxBzznDiXEdzxwY1W5EuqhVPYzmiRV95Gwt2e3InlFYwmtle0rMeEh-Q38bF5Gqw6k3Z_1fb7J6uPOBOH1yIW3suT6MlX37LabmoQg320tHVZKeicjD2EtJD5r9NrpENilOFx28aRCD-JQb2P7ii2Xa3wgCAC"/>
+</div>
+</div>
+</div>
+</header>
+<section class="p-8 max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter mb-xl">
+<div class="bg-white p-md rounded-xl ambient-shadow lift-hover transition-all flex items-center justify-between group">
+<div>
+<p class="text-slate-500 font-label-md mb-1">Total Products</p>
+<h3 class="text-headline-md font-display-lg text-primary">18</h3>
+</div>
+<div class="w-14 h-14 bg-indigo-50 rounded-2xl flex items-center justify-center group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-white transition-colors" data-icon="inventory_2" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+</div>
+</div>
+<div class="bg-white p-md rounded-xl ambient-shadow lift-hover transition-all flex items-center justify-between group">
+<div>
+<p class="text-slate-500 font-label-md mb-1">Total Orders</p>
+<h3 class="text-headline-md font-display-lg text-primary">124</h3>
+</div>
+<div class="w-14 h-14 bg-indigo-50 rounded-2xl flex items-center justify-center group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-white transition-colors" data-icon="shopping_bag" style="font-variation-settings: 'FILL' 1;">shopping_bag</span>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-xl ambient-shadow overflow-hidden">
+<div class="px-md py-sm border-b border-slate-100 flex items-center justify-between bg-slate-50/30">
+<h3 class="font-headline-sm text-lg">Latest Orders</h3>
+<button class="text-primary font-label-md hover:underline">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-white">
+<th class="px-md py-4 font-label-sm text-slate-400 uppercase tracking-wider border-b border-slate-100">Order ID</th>
+<th class="px-md py-4 font-label-sm text-slate-400 uppercase tracking-wider border-b border-slate-100">Customer</th>
+<th class="px-md py-4 font-label-sm text-slate-400 uppercase tracking-wider border-b border-slate-100">Status</th>
+<th class="px-md py-4 font-label-sm text-slate-400 uppercase tracking-wider border-b border-slate-100 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-50">
+<tr class="hover:bg-slate-50/50 transition-colors">
+<td class="px-md py-4 font-label-md text-on-surface">#TK-8821</td>
+<td class="px-md py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Customer" data-alt="Minimalist avatar of a customer with a soft neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIBYtTOX7QAykHWsTD4yPXCsj8eU-__6jFS2S6PdWTUEOg2qBinMFun0pHm_YZx23flunMqA17xZRvjSdFU3zjcmwqlSW0VyG9CmLS9n9h7KIMxHuChxwF-pT2OvodoVLZ9FU8e4WKEb8Jd1FBf09zqpq5RI0KsfmHkevaQSsph91lRRxqBJExh_KXT3W0DfIlOrTpbRRnN-4iBtkYV6jDihIRwMZI-i4ps3WLciyiuUNU2JRX8oJRLwzX7G1DI-HFblFn16NVQ5yz"/>
+</div>
+<span class="font-body-md text-sm">Alex Thompson</span>
+</div>
+</td>
+<td class="px-md py-4">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-600 border border-amber-100">
+                                        Pending
+                                    </span>
+</td>
+<td class="px-md py-4 text-right">
+<button class="px-4 py-1.5 rounded-lg border border-slate-200 text-sm font-medium text-slate-600 hover:bg-white hover:border-primary hover:text-primary transition-all">View</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/50 transition-colors">
+<td class="px-md py-4 font-label-md text-on-surface">#TK-8820</td>
+<td class="px-md py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Customer" data-alt="User profile picture of a cheerful young professional woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBi8_amlr1NKWapmRaqLRNK0SkPJNvmTlTwdquIttu9iaYDKBPl04wk11FthJjPa-ngZi0vBq_LbvzKcLb2Q-z498ThJwIdRlMflCLGefosYVk3KK_IVQxhl0jfSZAoD9uWAwxOGWHE9wX5Y1myT80uC839IiSFWGqwoF8z_ZPuLfnxyxcuHNzoXjNhpJ_D_3iJauhZ35w0ofmNBDusfgW2ZAv7SFTZDoXS0s2tk6hrkfpUNXb2mNcKL0pO1qOg7N_b8dGu9GmCiUaV"/>
+</div>
+<span class="font-body-md text-sm">Sarah Jenkins</span>
+</div>
+</td>
+<td class="px-md py-4">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-600 border border-blue-100">
+                                        Processing
+                                    </span>
+</td>
+<td class="px-md py-4 text-right">
+<button class="px-4 py-1.5 rounded-lg border border-slate-200 text-sm font-medium text-slate-600 hover:bg-white hover:border-primary hover:text-primary transition-all">View</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/50 transition-colors">
+<td class="px-md py-4 font-label-md text-on-surface">#TK-8819</td>
+<td class="px-md py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Customer" data-alt="Customer avatar portrait of a man smiling with soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDa6PjY1GmQm0wojq3nXsUmRHT-MAzOW-YAk8T7IXb-vcz5mKbOhiHGVtQbobg1MAApVamY3ClaGOQHLv3ke6ERJPV-nos17VQf3P2eC4DuFcpvudroobl-CqvBGw8yVTEHVEaW80YMuRd62As10ROUJKw1kNhozJjp-h2un9CZ4-GymbDS-g5YPYrjcSKHA2CyLDJbplZ_SKQuQwbyALDRg6o_byxFsOa9Dm5ql4WLowoK3m8aYUoQuuWHLPFgHX0cctT2e2tLkh-i"/>
+</div>
+<span class="font-body-md text-sm">Michael Chen</span>
+</div>
+</td>
+<td class="px-md py-4">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-600 border border-emerald-100">
+                                        Completed
+                                    </span>
+</td>
+<td class="px-md py-4 text-right">
+<button class="px-4 py-1.5 rounded-lg border border-slate-200 text-sm font-medium text-slate-600 hover:bg-white hover:border-primary hover:text-primary transition-all">View</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mt-lg grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="md:col-span-2 bg-gradient-to-br from-indigo-600 to-primary p-lg rounded-2xl text-white relative overflow-hidden flex flex-col justify-center">
+<div class="relative z-10">
+<h4 class="font-headline-sm mb-2">Ready to expand?</h4>
+<p class="opacity-80 mb-6 max-w-md">Your shop is growing fast. Consider adding more high-demand items to your catalog this week.</p>
+<button class="bg-white text-primary px-6 py-2 rounded-xl font-label-md lift-hover transition-all">Explore Categories</button>
+</div>
+<div class="absolute right-0 top-0 bottom-0 w-1/3 opacity-20 pointer-events-none">
+<img class="h-full w-full object-cover" data-alt="Abstract flowing liquid shapes in shades of blue and indigo representing growth and motion" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkzUnvEIy0CRnq-Ups2OR5pYY3v6e1xz9MD-r0P5T57shmmfUgNJcg6QDKrqK0B1rofjG7H6EKAJm9cZV7Fnd41CfRTnXIhnw2tZRf-DeUO-0QXv1b0VzQUJk_gtZMzZdjNTTMj3SQAJ38ppVGUshBJidmgmxBdQPPx1K84Z1aHN18er7BdaV_0bvPN6YXzV8C2ZY_zauL9rmCRWkomOFpOtNyPtZgEFc8gFd3mxXZxp8bL6tMWBKZ_vkwnhrqE4-pkcnvTLBGQMLT"/>
+</div>
+</div>
+<div class="bg-white p-md rounded-2xl ambient-shadow flex flex-col items-center text-center justify-center">
+<div class="w-16 h-16 rounded-full bg-secondary-container/30 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="rocket_launch" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</div>
+<h4 class="font-headline-sm text-lg mb-1">Growth Streak</h4>
+<p class="text-slate-500 text-sm mb-4">You've completed 12% more orders than last week!</p>
+<div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[12%] rounded-full"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</body></html>
